@@ -122,17 +122,30 @@ body {
         }
         
         .masonry-gallery {
-            column-count: 3;
-            column-gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            margin: -7.5px; /* Untuk mengkompensasi margin item */
         }
         
         .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
+            flex: 1 0 calc(33.333% - 15px); /* 3 kolom dengan jarak */
+            margin: 7.5px;
+            min-width: 200px; /* Lebar minimum untuk responsif */
+        }
+        
+        /* Tablet Styles */
+        @media (max-width: 900px) {
+            .masonry-item {
+                flex: 1 0 calc(50% - 15px); /* 2 kolom di tablet */
+            }
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 600px) {
+            .masonry-item {
+                flex: 1 0 calc(50% - 10px); /* 2 kolom di mobile */
+                margin: 5px;
+            }
         }
         
         .masonry-item:hover {
